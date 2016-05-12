@@ -148,7 +148,7 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #D1BE02;
-    background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+    background: url(../img/intro-bg.jpg) no-repeat center scroll;
     background-color: #fff;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -373,12 +373,10 @@ body {
     webkit-tap-highlight-color: #fff;
 }
 
-.invite1
+@media(max-width:767px) 
 {
-    background-image: url("../img/invite1.png");
-}
-
-.invite2
-{
-    background-image: url("../img/invite2.png");
+    .per100
+    {
+        width: 100%;
+    }
 }
