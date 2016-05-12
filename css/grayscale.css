@@ -372,3 +372,13 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #fff;
 }
+
+.invite1
+{
+    background-image: url("../img/invite1.png");
+}
+
+.invite2
+{
+    background-image: url("../img/invite2.png");
+}
