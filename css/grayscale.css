@@ -373,6 +373,11 @@ body {
     webkit-tap-highlight-color: #fff;
 }
 
+.brand-heading
+{
+    margin-top: 180px;
+}
+
 @media(max-width:767px) 
 {
     .per100
