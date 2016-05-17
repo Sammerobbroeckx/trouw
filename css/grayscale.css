@@ -380,8 +380,15 @@ body {
 
 @media(max-width:767px) 
 {
-    .per100
+    #page-top > header > div > div.container.col-md-4 > form > div > input
     {
-        width: 100%;
+        width: 60%;
+        margin: auto;
     }
+}
+
+#page-top > header > div > div.container.col-md-4 > form > button
+{
+    background-color: #D1BE02;
+    color: #fff;
 }

@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    
+    if($_SESSION["admin"] == 1000)
+    {
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,8 +83,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Ze gaan trouwen!</h1>
-                        <p class="intro-text">. . .</p>
+                        <h1 class="brand-heading">Wij gaan trouwen!</h1>
                         <a href="#uitnodiging" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
@@ -208,3 +213,11 @@
 </body>
 
 </html>
+<?php
+    }
+    else
+    {
+        session_destroy();
+        echo '<META http-equiv="refresh" content="0;URL=login.php">';
+    }
+?>
