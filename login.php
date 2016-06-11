@@ -3,7 +3,7 @@
     
     if(isset($_GET["code"]))
     {
-        if($_GET["code"] == "123")
+        if($_GET["code"] == "R&J2016")
         {
             $_SESSION["admin"] = 1000;
             echo '<META http-equiv="refresh" content="0;URL=index.php">';

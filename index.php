@@ -3,6 +3,17 @@
     
     if($_SESSION["admin"] == 1000)
     {
+        include("php/linkdb.php");
+        if(isset($_POST["singlebutton"]))
+        {
+            if($_POST["singlebutton"] == "submit")
+            {
+                //echo "<pre>".print_r($_POST, true)."</pre>";
+                $sql = 'INSERT INTO aanwezig (mail, persoon) VALUES ("'.$_POST["mail"].'","'.$_POST["persoon"].'");';
+                //echo $sql;
+                mysqli_query($link, $sql);
+            }            
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +79,7 @@
                         <a class="page-scroll" href="#foto">Foto's</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="#contact">Info</a>
                     </li>
                 </ul>
             </div>
@@ -84,6 +95,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Wij gaan trouwen!</h1>
+
                         <a href="#uitnodiging" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
@@ -96,12 +108,12 @@
     <!-- Uitnodiging Section -->
     <section id="uitnodiging" class="container content-section text-center per100">
             <h2>Uitnodiging</h2>
-            <!--<div class="col-lg-6 per100">
+            <div class="col-lg-6 per100">
                 <img class="per100" src="img/invite1.png"></img>
             </div>
             <div class="col-lg-6">
                 <img class="per100" src="img/invite2.png"></img>
-            </div>-->
+            </div>
     </section>
 
     <!-- Komen Section -->
@@ -110,7 +122,39 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Kom jij ook?</h2>
-                    <p>. . .</p>
+                    <div id="komen">
+                        <form class="form-horizontal" method="POST" action="index.php">
+                            <fieldset>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                            <label class="col-md-4 control-label" for="textinput">wie ben je? en met wie kom je?</label>  
+                            <div class="col-md-6">
+                            <input id="textinput" name="persoon" type="text" placeholder="bv: joske vermeulen" class="form-control input-md" required="">
+                            <span class="help-block">indien 2 personen gebruik "&amp;"</span>  
+                            </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                            <label class="col-md-4 control-label" for="textinput">je mail adres</label>  
+                            <div class="col-md-6">
+                            <input id="textinput" name="mail" type="text" placeholder="bv: joske.vermeulen@gmail.com" class="form-control input-md" required="">
+                            <span class="help-block">enkel 1 adres vereist</span>  
+                            </div>
+                            </div>
+
+                            <!-- Button -->
+                            <div class="form-group">
+                            <label class="col-md-4 control-label" for="singlebutton"></label>
+                            <div class="col-md-4">
+                                <button id="singlebutton" name="singlebutton" value="submit" class="btn btn-default">Verzenden</button>
+                            </div>
+                            </div>
+
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,7 +162,7 @@
     
     <!-- Foto's' Section -->
     <section id="foto" class="content-section text-center">
-        <div class="download-section">
+        <div class="download2-section">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Foto's volgen nog!</h2>
@@ -132,55 +176,8 @@
     <section id="contact" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact</h2>
-                <form class="form-horizontal">
-                    <fieldset>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                    <label class="col-md-4 control-label intro-text" for="mail">E-mail</label>  
-                    <div class="col-md-4">
-                    <input id="mail" name="mail" type="text" placeholder="e-mail" class="form-control input-md">
-                        
-                    </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                    <label class="col-md-4 control-label intro-text" for="naam">Naam</label>  
-                    <div class="col-md-4">
-                    <input id="naam" name="naam" type="text" placeholder="naam" class="form-control input-md">
-                        
-                    </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                    <label class="col-md-4 control-label intro-text" for="onderwerp">Onderwerp</label>  
-                    <div class="col-md-4">
-                    <input id="onderwerp" name="onderwerp" type="text" placeholder="onderwerp" class="form-control input-md">
-                        
-                    </div>
-                    </div>
-                    
-                    <!-- Textarea -->
-                    <div class="form-group">
-                    <label class="col-md-4 control-label intro-text" for="vraag">Vraag</label>
-                    <div class="col-md-4">                     
-                        <textarea class="form-control" id="vraag" name="vraag"></textarea>
-                    </div>
-                    </div>
-                    
-                    <!-- Button -->
-                    <div class="form-group">
-                    <label class="col-md-4 control-label intro-text" for="singlebutton">Single Button</label>
-                    <div class="col-md-4">
-                        <button id="singlebutton" name="singlebutton" class="btn btn-default">Button</button>
-                    </div>
-                    </div>
-                    
-                    </fieldset>
-                </form>
+                <h2>Info</h2>
+                
             </div>
         </div>
     </section>
@@ -203,9 +200,6 @@
 
     <!-- Plugin JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
-
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
